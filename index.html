@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Elchanan AI</title>
-<meta name="description" content="Elchanan AI - מודל הבינה המלאכותית מהדור הבא. כעת בבטא פרטית.">
+<title>Elchanan AI | EGI - Elhanan Ginzberg’s Intelligence</title>
+<meta name="description" content="Elchanan AI - מודל הבינה המלאכותית מהדור הבא, מבית EGI - Elhanan Ginzberg’s Intelligence. כעת בבטא פרטית.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -39,7 +39,8 @@
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--line);
   }
-  .logo { font-weight: 800; font-size: 20px; letter-spacing: 0.2px; }
+  .logo { font-weight: 800; font-size: 20px; letter-spacing: 0.2px; display: flex; align-items: center; gap: 9px; }
+  .logo .logo-mark { display: block; flex: 0 0 auto; }
   .logo .dot { color: var(--accent-2); }
   .badge-beta {
     font-size: 12px; font-weight: 600; color: #0b0b16;
@@ -179,6 +180,7 @@
     border: 0; border-radius: 10px; color: #0b0b16; font-weight: 700;
     font-family: inherit; font-size: 14px; padding: 8px 18px; cursor: pointer;
   }
+  .brand-line { margin-top: 24px; font-size: 13.5px; color: var(--ink-2); letter-spacing: 0.3px; }
 
   /* Plans */
   .plans { display: grid; grid-template-columns: 1fr; gap: 18px; }
@@ -240,7 +242,7 @@
 <body>
 
 <nav class="nav">
-  <div class="logo"><span dir="ltr">Elchanan AI</span><span class="dot">.</span><span class="badge-beta">בטא</span></div>
+  <div class="logo"><svg class="logo-mark" viewBox="0 0 48 48" width="30" height="30" aria-hidden="true"><defs><linearGradient id="egiGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#38bdf8"/><stop offset="1" stop-color="#7c6cff"/></linearGradient></defs><rect x="3" y="3" width="42" height="42" rx="12" fill="rgba(124,108,255,0.10)" stroke="url(#egiGrad)" stroke-width="3"/><text x="24" y="30.5" text-anchor="middle" font-family="Heebo, Arial, sans-serif" font-size="15" font-weight="800" fill="url(#egiGrad)">EGI</text></svg><span dir="ltr">EGI</span><span class="dot">.</span><span class="badge-beta">בטא</span></div>
   <div class="nav-links">
     <a href="#chat">צ'אט</a>
     <a href="#plans">תוכניות</a>
@@ -251,6 +253,7 @@
   <h1>הבינה המלאכותית<br><span class="grad">מהדור הבא</span></h1>
   <p><span dir="ltr">Elchanan AI</span> הוא מודל שפה מתקדם שמבין עברית כמו שצריך. השירות נמצא כרגע בבטא פרטית, והגישה ניתנת בהדרגה.</p>
   <a class="cta" href="#chat">התחילו לשוחח</a>
+  <p class="brand-line">מבית <span dir="ltr">EGI - Elhanan Ginzberg’s Intelligence</span></p>
 </header>
 
 <section id="chat">
@@ -333,7 +336,7 @@
 </div>
 
 <footer>
-  <span dir="ltr">Elchanan AI</span> © 2026 · כל הזכויות שמורות
+  <span dir="ltr">EGI - Elhanan Ginzberg’s Intelligence</span> © 2026 · כל הזכויות שמורות
 </footer>
 
 <script>
@@ -347,7 +350,8 @@
 
   var INVITE_URL = 'https://jcool-j.github.io/elchanan-ai/';
 
-  var WAITLIST_REPLY = 'תודה על פנייתך! אתה נמצא כרגע ברשימת ההמתנה לשירות Elchanan AI, שעדיין נמצא בגרסת בטא.\nמיקומך בתור: 13415678.';
+  var WAITLIST_TEXT = 'תודה על פנייתך! אתה נמצא כרגע ברשימת ההמתנה לשירות Elchanan AI, שעדיין נמצא בגרסת בטא. מיקומך בתור: 13415678.';
+  var ACCESS_TEXT = 'כדי לקבל גישה מיידית בלי לחכות בתור, עליך לצרף 1500 חברים לשירות באמצעות קישור ההזמנה האישי שלך:';
 
   function scrollToBottom() {
     chatBody.scrollTop = chatBody.scrollHeight;
@@ -379,14 +383,18 @@
     var typing = addTyping();
     setTimeout(function () {
       typing.remove();
-      addMessage(WAITLIST_REPLY, 'bot');
+      addAccessCard([WAITLIST_TEXT, ACCESS_TEXT], true);
     }, 900 + Math.random() * 700);
   }
 
-  function addInviteCard() {
+  function addAccessCard(lines, withCopy) {
     var div = document.createElement('div');
     div.className = 'msg bot';
-    div.appendChild(document.createTextNode('בשמחה! הנה קישור ההזמנה שלכם. שתפו אותו עם 1500 החברים שלכם כדי שיוכלו להצטרף לרשימת ההמתנה:'));
+    lines.forEach(function (line, i) {
+      if (i > 0) div.appendChild(document.createElement('br'));
+      div.appendChild(document.createTextNode(line));
+    });
+    div.appendChild(document.createElement('br'));
     var link = document.createElement('a');
     link.className = 'invite-link';
     link.href = INVITE_URL;
@@ -394,22 +402,27 @@
     link.rel = 'noopener';
     link.textContent = INVITE_URL;
     div.appendChild(link);
-    div.appendChild(document.createTextNode('המיקום הראשון הפנוי בתור כרגע: 13415679.'));
-    div.appendChild(document.createElement('br'));
-    var btn = document.createElement('button');
-    btn.type = 'button';
-    btn.className = 'copy-btn';
-    btn.textContent = 'העתיקו קישור הזמנה';
-    btn.addEventListener('click', function () { copyInvite(btn); });
-    div.appendChild(btn);
+    if (withCopy) {
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'copy-btn';
+      btn.textContent = 'העתקת קישור ההזמנה';
+      btn.addEventListener('click', function () { copyInvite(btn); });
+      div.appendChild(btn);
+    }
     chatBody.appendChild(div);
     scrollToBottom();
   }
 
+  function addInviteCard() {
+    addAccessCard(['בשמחה! כדי לקבל גישה מיידית בלי לחכות בתור, עליכם לצרף 1500 חברים לשירות. שתפו איתם את קישור ההזמנה האישי שלכם:'], true);
+  }
+
   function copyInvite(btn) {
+    var label = btn.textContent;
     function done() {
       btn.textContent = 'הקישור הועתק!';
-      setTimeout(function () { btn.textContent = 'העתיקו קישור הזמנה'; }, 2000);
+      setTimeout(function () { btn.textContent = label; }, 2000);
     }
     function fallbackCopy() {
       var ta = document.createElement('textarea');
