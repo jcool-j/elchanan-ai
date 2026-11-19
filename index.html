@@ -3,8 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Elchanan AI | EGI - Elhanan Ginzberg’s Intelligence</title>
-<meta name="description" content="Elchanan AI - מודל הבינה המלאכותית מהדור הבא, מבית EGI - Elhanan Ginzberg’s Intelligence. כעת בבטא פרטית.">
+<title>Elhanan AI | EGI - Elhanan Ginzberg’s Intelligence</title>
+<meta name="description" content="Elhanan AI - מודל הבינה המלאכותית מהדור הבא, מבית EGI - Elhanan Ginzberg’s Intelligence. כעת בבטא פרטית.">
+<meta name="theme-color" content="#07070f">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="he_IL">
+<meta property="og:url" content="https://jcool-j.github.io/elchanan-ai/">
+<meta property="og:site_name" content="EGI - Elhanan Ginzberg’s Intelligence">
+<meta property="og:title" content="Elhanan AI | הבינה המלאכותית מהדור הבא">
+<meta property="og:description" content="מודל שפה מתקדם שמבין עברית כמו שצריך. כעת בבטא פרטית מבית EGI - Elhanan Ginzberg’s Intelligence. הגישה ניתנת בהדרגה, או מיידית לבעלי 1500 חברים זמינים.">
+<meta property="og:image" content="https://jcool-j.github.io/elchanan-ai/2-share.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Elhanan AI | הבינה המלאכותית מהדור הבא">
+<meta name="twitter:description" content="מודל שפה מתקדם שמבין עברית כמו שצריך. כעת בבטא פרטית מבית EGI - Elhanan Ginzberg’s Intelligence.">
+<meta name="twitter:image" content="https://jcool-j.github.io/elchanan-ai/2-share.png">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%2338bdf8%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%237c6cff%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2214%22%20fill%3D%22%2307070f%22/%3E%3Cpath%20d%3D%22M32%204%2056%2018v28L32%2060%208%2046V18Z%22%20fill%3D%22rgba%28124%2C108%2C255%2C0.12%29%22%20stroke%3D%22url%28%23g%29%22%20stroke-width%3D%223.5%22%20stroke-linejoin%3D%22round%22/%3E%3Cpath%20d%3D%22M22%2021h19M22%2032h13M22%2043h19%22%20fill%3D%22none%22%20stroke%3D%22url%28%23g%29%22%20stroke-width%3D%225.5%22%20stroke-linecap%3D%22round%22/%3E%3Ccircle%20cx%3D%2242%22%20cy%3D%2232%22%20r%3D%223.4%22%20fill%3D%22%2338bdf8%22/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -15,7 +30,7 @@
     --card: #12122280;
     --line: #26263f;
     --ink: #f2f1fa;
-    --ink-2: #a7a5c4;
+    --ink-2: #c6c4e2;
     --accent: #7c6cff;
     --accent-2: #38bdf8;
     --danger: #ff5d6c;
@@ -30,6 +45,11 @@
     line-height: 1.6;
   }
   a { color: inherit; text-decoration: none; }
+  .sr-only {
+    position: absolute; width: 1px; height: 1px;
+    padding: 0; margin: -1px; overflow: hidden;
+    clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+  }
 
   .nav {
     position: sticky; top: 0; z-index: 50;
@@ -54,7 +74,7 @@
   .hero {
     position: relative;
     text-align: center;
-    padding: 84px 20px 64px;
+    padding: 72px 20px 50px;
     overflow: hidden;
   }
   .hero::before {
@@ -79,7 +99,7 @@
   }
   .hero p {
     color: var(--ink-2); font-size: clamp(16px, 2.4vw, 19px);
-    max-width: 560px; margin: 0 auto 26px;
+    max-width: 560px; margin: 0 auto 22px;
   }
   .cta {
     display: inline-block;
@@ -90,7 +110,7 @@
   }
   .cta:hover { transform: translateY(-2px); }
 
-  section { padding: 56px 20px; max-width: 980px; margin: 0 auto; }
+  section { padding: 50px 20px; max-width: 980px; margin: 0 auto; }
   .section-title { font-size: clamp(26px, 4vw, 34px); font-weight: 800; margin-bottom: 8px; }
   .section-sub { color: var(--ink-2); margin-bottom: 30px; }
 
@@ -110,13 +130,21 @@
   }
   .avatar {
     width: 36px; height: 36px; border-radius: 50%;
-    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    background: #15152a; border: 1px solid var(--line);
     display: flex; align-items: center; justify-content: center;
-    font-weight: 800; color: #0b0b16; font-size: 15px;
+    flex: 0 0 auto;
   }
   .chat-head .name { font-weight: 700; }
   .chat-head .status { font-size: 13px; color: #4ade80; display: flex; align-items: center; gap: 5px; }
   .chat-head .status::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #4ade80; }
+  .new-chat-btn {
+    margin-inline-start: auto;
+    background: transparent; border: 1px solid var(--line); color: var(--ink-2);
+    border-radius: 10px; padding: 6px 14px;
+    font-family: inherit; font-size: 13px; font-weight: 600; cursor: pointer;
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+  .new-chat-btn:hover { color: var(--ink); border-color: var(--accent); }
   .chat-body {
     height: 340px; overflow-y: auto;
     padding: 18px 14px; display: flex; flex-direction: column; gap: 10px;
@@ -180,7 +208,7 @@
     border: 0; border-radius: 10px; color: #0b0b16; font-weight: 700;
     font-family: inherit; font-size: 14px; padding: 8px 18px; cursor: pointer;
   }
-  .brand-line { margin-top: 24px; font-size: 13.5px; color: var(--ink-2); letter-spacing: 0.3px; }
+  .brand-line { margin-top: 20px; font-size: 13.5px; color: var(--ink-2); letter-spacing: 0.3px; }
 
   /* Plans */
   .plans { display: grid; grid-template-columns: 1fr; gap: 18px; }
@@ -225,11 +253,17 @@
     display: flex; align-items: center; justify-content: center; font-size: 26px; font-weight: 800;
   }
   .dialog h3 { font-size: 20px; font-weight: 800; margin-bottom: 8px; }
-  .dialog p { color: var(--ink-2); font-size: 15.5px; margin-bottom: 20px; }
+  .dialog p { color: var(--ink-2); font-size: 15.5px; margin-bottom: 12px; }
+  .dialog .err-code {
+    font-size: 13.5px; color: var(--ink-2);
+    background: #191930; border: 1px solid var(--line); border-radius: 8px;
+    display: inline-block; padding: 4px 12px; margin-bottom: 18px;
+  }
   .dialog button {
     background: linear-gradient(90deg, var(--accent), var(--accent-2));
     border: 0; border-radius: 12px; color: #0b0b16; font-weight: 700;
     font-family: inherit; font-size: 15px; padding: 11px 30px; cursor: pointer;
+    display: block; margin: 0 auto;
   }
 
   footer {
@@ -237,12 +271,36 @@
     padding: 26px 20px; text-align: center;
     color: var(--ink-2); font-size: 13.5px;
   }
+
+  @media (max-width: 640px) {
+    .hero { padding: 42px 16px 30px; }
+    .hero p { margin-bottom: 18px; }
+    .brand-line { margin-top: 14px; }
+    section { padding: 34px 14px; }
+    .section-sub { margin-bottom: 22px; }
+    .nav { padding: 12px 14px; }
+    .chat-body { height: 320px; }
+  }
 </style>
 </head>
 <body>
 
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="egiGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#38bdf8"/>
+      <stop offset="1" stop-color="#7c6cff"/>
+    </linearGradient>
+  </defs>
+  <symbol id="egi-mark" viewBox="0 0 64 64">
+    <path d="M32 4 56 18v28L32 60 8 46V18Z" fill="rgba(124,108,255,0.12)" stroke="url(#egiGrad)" stroke-width="3.5" stroke-linejoin="round"/>
+    <path d="M22 21h19M22 32h13M22 43h19" fill="none" stroke="url(#egiGrad)" stroke-width="5.5" stroke-linecap="round"/>
+    <circle cx="42" cy="32" r="3.4" fill="#38bdf8"/>
+  </symbol>
+</svg>
+
 <nav class="nav">
-  <div class="logo"><svg class="logo-mark" viewBox="0 0 48 48" width="30" height="30" aria-hidden="true"><defs><linearGradient id="egiGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#38bdf8"/><stop offset="1" stop-color="#7c6cff"/></linearGradient></defs><rect x="3" y="3" width="42" height="42" rx="12" fill="rgba(124,108,255,0.10)" stroke="url(#egiGrad)" stroke-width="3"/><text x="24" y="30.5" text-anchor="middle" font-family="Heebo, Arial, sans-serif" font-size="15" font-weight="800" fill="url(#egiGrad)">EGI</text></svg><span dir="ltr">EGI</span><span class="dot">.</span><span class="badge-beta">בטא</span></div>
+  <div class="logo"><svg class="logo-mark" width="30" height="30" aria-hidden="true"><use href="#egi-mark"/></svg><span dir="ltr">EGI</span><span class="dot">.</span><span class="badge-beta">בטא</span></div>
   <div class="nav-links">
     <a href="#chat">צ'אט</a>
     <a href="#plans">תוכניות</a>
@@ -251,21 +309,22 @@
 
 <header class="hero">
   <h1>הבינה המלאכותית<br><span class="grad">מהדור הבא</span></h1>
-  <p><span dir="ltr">Elchanan AI</span> הוא מודל שפה מתקדם שמבין עברית כמו שצריך. השירות נמצא כרגע בבטא פרטית, והגישה ניתנת בהדרגה.</p>
+  <p><span dir="ltr">Elhanan AI</span> הוא מודל שפה מתקדם שמבין עברית כמו שצריך. השירות נמצא כרגע בבטא פרטית, והגישה ניתנת בהדרגה.</p>
   <a class="cta" href="#chat">התחילו לשוחח</a>
   <p class="brand-line">מבית <span dir="ltr">EGI - Elhanan Ginzberg’s Intelligence</span></p>
 </header>
 
 <section id="chat">
-  <h2 class="section-title">שוחחו עם <span dir="ltr">Elchanan AI</span></h2>
+  <h2 class="section-title">שוחחו עם <span dir="ltr">Elhanan AI</span></h2>
   <p class="section-sub">שאלו כל שאלה. המודל שלנו כבר כמעט מוכן.</p>
   <div class="chat-shell">
     <div class="chat-head">
-      <div class="avatar" dir="ltr">EA</div>
+      <div class="avatar"><svg width="24" height="24" aria-hidden="true"><use href="#egi-mark"/></svg></div>
       <div>
-        <div class="name" dir="ltr">Elchanan AI</div>
+        <div class="name" dir="ltr">Elhanan AI</div>
         <div class="status">מחובר</div>
       </div>
+      <button type="button" class="new-chat-btn" id="newChatBtn">שיחה חדשה</button>
     </div>
     <div class="chat-body" id="chatBody"></div>
     <div class="chat-input">
@@ -276,52 +335,53 @@
       <button id="inviteBtn" type="button">🎉 הזמינו 1500 חברים להצטרף</button>
     </div>
   </div>
+  <div id="srStatus" class="sr-only" aria-live="polite"></div>
 </section>
 
 <section id="plans">
   <h2 class="section-title">תוכניות ומחירים</h2>
-  <p class="section-sub">בחרו את התוכנית שמתאימה לכם וקבלו גישה מוקדמת ברגע שהבטא תיפתח.</p>
+  <p class="section-sub">בחרו את התוכנית שמתאימה לכם וקבלו גישה מוקדמת ברגע שהבטא תיפתח. הרגע הזה לא יגיע, אבל הבחירה חשובה.</p>
   <div class="plans">
     <div class="plan">
       <div>
-        <div class="plan-name" dir="ltr">Elchanan AI plus</div>
+        <div class="plan-name" dir="ltr">Elhanan AI plus</div>
         <div class="plan-tag">למתחילים</div>
       </div>
       <div class="plan-price">₪29<small> / חודש</small></div>
       <ul>
-        <li>עד 50 שאלות ביום</li>
-        <li>מהירות תגובה רגילה</li>
-        <li>גישה למודל הבסיס</li>
+        <li>עד 50 שאלות ביום, תשובה אחת בחודש</li>
+        <li>מהירות תגובה רגילה: 3-5 שנים עסקיות</li>
+        <li>גישה למודל הבסיס ברגע שהוא יסיים אימונים</li>
       </ul>
-      <button type="button" data-plan="Elchanan AI plus">רכישה</button>
+      <button type="button" data-plan="Elhanan AI plus">רכישה</button>
     </div>
     <div class="plan featured">
       <div>
-        <div class="plan-name" dir="ltr">Elchanan AI Pro</div>
+        <div class="plan-name" dir="ltr">Elhanan AI Pro</div>
         <div class="plan-tag">הפופולרית ביותר</div>
       </div>
       <div class="plan-price">₪59<small> / חודש</small></div>
       <ul>
-        <li>שאלות ללא הגבלה</li>
-        <li>מהירות תגובה מואצת</li>
-        <li>גישה למודל המתקדם</li>
-        <li>זיכרון שיחה מלא</li>
+        <li>שאלות ללא הגבלה, תשובות בהתאם לזמינות המחשבון</li>
+        <li>מהירות תגובה מואצת: רק שנתיים עסקיות</li>
+        <li>גישה למודל המתקדם (עדיין בבטא, אבל מתקדם)</li>
+        <li>זיכרון שיחה מלא: אנחנו זוכרים כל פעם שלא ענינו</li>
       </ul>
-      <button type="button" data-plan="Elchanan AI Pro">רכישה</button>
+      <button type="button" data-plan="Elhanan AI Pro">רכישה</button>
     </div>
     <div class="plan">
       <div>
-        <div class="plan-name" dir="ltr">Elchanan AI Ultra</div>
+        <div class="plan-name" dir="ltr">Elhanan AI Ultra</div>
         <div class="plan-tag">לחובבים כבדים</div>
       </div>
       <div class="plan-price">₪139<small> / חודש</small></div>
       <ul>
-        <li>כל מה שיש ב-Pro</li>
-        <li>עדיפות מקסימלית בתור</li>
-        <li>גישה מוקדמת לפיצ'רים חדשים</li>
-        <li>מנהל חשבון אישי</li>
+        <li>כל מה שיש ב-Pro, באריזה יוקרתית יותר</li>
+        <li>עדיפות מקסימלית בתור: מקום 13415677</li>
+        <li>גישה מוקדמת לפיצ'רים שעוד לא הומצאו</li>
+        <li>מנהל חשבון אישי: שושי, בתיאום עם קצבורג</li>
       </ul>
-      <button type="button" data-plan="Elchanan AI Ultra">רכישה</button>
+      <button type="button" data-plan="Elhanan AI Ultra">רכישה</button>
     </div>
   </div>
 </section>
@@ -331,6 +391,7 @@
     <div class="icon">!</div>
     <h3 id="errTitle">שגיאת רכישה</h3>
     <p id="errText">אירעה תקלה ברכישה. לפרטים נא לפנות לקצבורג או לשושי.</p>
+    <span class="err-code">קוד שגיאה: <span dir="ltr">EGI-1500</span></span>
     <button type="button" id="errClose">הבנתי</button>
   </div>
 </div>
@@ -344,17 +405,99 @@
   var chatBody = document.getElementById('chatBody');
   var chatInput = document.getElementById('chatInput');
   var sendBtn = document.getElementById('sendBtn');
+  var newChatBtn = document.getElementById('newChatBtn');
   var overlay = document.getElementById('errorOverlay');
   var errClose = document.getElementById('errClose');
   var inviteBtn = document.getElementById('inviteBtn');
+  var srStatus = document.getElementById('srStatus');
 
   var INVITE_URL = 'https://jcool-j.github.io/elchanan-ai/';
+  var STORAGE_KEY = 'egi-chat-history-v1';
 
-  var WAITLIST_TEXT = 'תודה על פנייתך! אתה נמצא כרגע ברשימת ההמתנה לשירות Elchanan AI, שעדיין נמצא בגרסת בטא. מיקומך בתור: 13415678.';
+  var WAITLIST_TEXT = 'תודה על פנייתך! אתה נמצא כרגע ברשימת ההמתנה לשירות Elhanan AI, שעדיין נמצא בגרסת בטא. מיקומך בתור: 13415678.';
   var ACCESS_TEXT = 'כדי לקבל גישה מיידית בלי לחכות בתור, עליך לצרף 1500 חברים לשירות באמצעות קישור ההזמנה האישי שלך:';
+  var GREETING_TEXT = 'שלום! אני Elhanan AI. במה אוכל לעזור היום?';
+
+  var INTENTS = [
+    {
+      keys: ['שלום', 'היי', 'הי ', 'בוקר טוב', 'ערב טוב', 'מה נשמע', 'מה קורה', 'אהלן'],
+      replies: [
+        'שלום! אני Elhanan AI. התשובה לשאלה שלך תגיע מיד אחרי שהבטא תיפתח.',
+        'היי! שמח שפנית. כרגע אני עסוק בלהיות בבטא, אבל תשאל.'
+      ]
+    },
+    {
+      keys: ['מי אתה', 'מי את', 'מה אתה', 'ספר לי עליך', 'ספרי עליך'],
+      replies: [
+        'אני Elhanan AI, מודל השפה של EGI - Elhanan Ginzberg’s Intelligence. חכם מדי כדי לצאת מהבטא, צנוע מדי לומר מתי.',
+        'אני המודל המתקדם בעולם. מקור: EGI - Elhanan Ginzberg’s Intelligence.'
+      ]
+    },
+    {
+      keys: ['אלחנן', 'גינזברג', 'ginzberg', 'elhanan'],
+      replies: [
+        'Elhanan Ginzberg הוא החזון מאחורי EGI. אגדה אומרת שהוא כבר קיבל גישה לבטא.',
+        'האיש, המיתוס, הבטא.'
+      ]
+    },
+    {
+      keys: ['מחיר', 'עולה', 'כסף', 'תשלום', 'תוכנית', 'תוכניות', 'מנוי', 'לקנות', 'רכישה', 'לשלם', 'זול', 'יקר'],
+      replies: [
+        'שאלה מצוינת! המחירים מופיעים למטה בתוכניות. התשלום נכשל אצלנו באופן אוטומטי, כדי לחסוך לך זמן.',
+        'המנוי זמני, אבל שגיאת הרכישה שלנו לנצח. פרטים בתוכניות למטה.'
+      ]
+    },
+    {
+      keys: ['גישה', 'בטא', 'תור', 'המתנה', 'חברים', 'הזמנה', 'להצטרף', 'הצטרפות', 'קישור', '1500', 'מיידי', 'מתי יפתח', 'מתי נפתח'],
+      access: true
+    },
+    {
+      keys: ['מה אתה יודע', 'מה אתה יכול', 'יכול', 'עזרה', 'תעזור', 'פיצ\'ר', 'פיצר', 'יכולות'],
+      replies: [
+        'אני יודע הכל: מתמטיקה, היסטוריה, פיזיקה קוונטית. כרגע אני בוחר שלא לענות, מתוך עיקרון.',
+        'בגרסת הבטא אני מתמחה בעיקר במקום 13415678 בתור. שאר היכולות בדרך.'
+      ]
+    },
+    {
+      keys: ['תודה', 'אחלה', 'מעולה', 'יופי', 'סבבה', 'מגניב'],
+      replies: [
+        'בשמחה! זו הייתה התשובה הכי טובה שנתתי השבוע.',
+        'תודה שתודית. גם זה נשמר בבטא.'
+      ]
+    },
+    {
+      keys: ['בדיחה', 'מצחיק', 'צחוק', 'לצחוק'],
+      replies: [
+        'בדיחה? בטח: מודל בינה מלאכותית נכנס לבטא. סוף הבדיחה.',
+        'למה Elhanan AI לא חוצה את הכביש? כי הוא עדיין מחכה בתור.'
+      ]
+    },
+    {
+      keys: ['ביי', 'להתראות', 'לילה טוב', 'יום טוב'],
+      replies: [
+        'להתראות! אשאר כאן בבטא, אם יש לך עוד 3-5 שנים עסקיות.',
+        'ביי! התור התקדם בזמן שדיברנו. בערך.'
+      ]
+    }
+  ];
+
+  var FALLBACKS = [
+    'קיבלתי. התשובה המלאה תישלח בדואר ישראל בעוד 3-5 שנים עסקיות.',
+    'שאלה מעניינת! רשמתי אותה בפנקס. הפנקס נמצא גם הוא בבטא.',
+    'המעבד שלי חושב על זה בדיוק עכשיו. המעבד שלי הוא קצבורג.',
+    'תודה על פנייתך! מיקומך בתור: 13415678. יש התקדמות: אתמול היית 13415679.',
+    'אני כמעט עונה לך. נשארו רק לצרף 1500 חברים לשירות.'
+  ];
+
+  var history = [];
+  var lastFallback = -1;
 
   function scrollToBottom() {
     chatBody.scrollTop = chatBody.scrollHeight;
+  }
+
+  function persist() {
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(history)); } catch (e) {}
   }
 
   function addMessage(text, who) {
@@ -365,26 +508,10 @@
     scrollToBottom();
   }
 
-  function addTyping() {
-    var div = document.createElement('div');
-    div.className = 'msg bot typing';
-    for (var i = 0; i < 3; i++) div.appendChild(document.createElement('span'));
-    chatBody.appendChild(div);
-    scrollToBottom();
-    return div;
-  }
-
-  function send() {
-    var text = chatInput.value.trim();
-    if (!text) return;
-    addMessage(text, 'user');
-    chatInput.value = '';
-    chatInput.focus();
-    var typing = addTyping();
-    setTimeout(function () {
-      typing.remove();
-      addAccessCard([WAITLIST_TEXT, ACCESS_TEXT], true);
-    }, 900 + Math.random() * 700);
+  function pushMessage(text, who) {
+    addMessage(text, who);
+    history.push({ k: 'm', who: who, text: text });
+    persist();
   }
 
   function addAccessCard(lines, withCopy) {
@@ -407,6 +534,7 @@
       btn.type = 'button';
       btn.className = 'copy-btn';
       btn.textContent = 'העתקת קישור ההזמנה';
+      btn.setAttribute('aria-label', 'העתקת קישור ההזמנה ללוח');
       btn.addEventListener('click', function () { copyInvite(btn); });
       div.appendChild(btn);
     }
@@ -414,14 +542,61 @@
     scrollToBottom();
   }
 
-  function addInviteCard() {
-    addAccessCard(['בשמחה! כדי לקבל גישה מיידית בלי לחכות בתור, עליכם לצרף 1500 חברים לשירות. שתפו איתם את קישור ההזמנה האישי שלכם:'], true);
+  function pushAccessCard(lines, withCopy) {
+    addAccessCard(lines, withCopy);
+    history.push({ k: 'c', lines: lines, copy: !!withCopy });
+    persist();
+  }
+
+  function addTyping() {
+    var div = document.createElement('div');
+    div.className = 'msg bot typing';
+    for (var i = 0; i < 3; i++) div.appendChild(document.createElement('span'));
+    chatBody.appendChild(div);
+    scrollToBottom();
+    return div;
+  }
+
+  function pickReply(text) {
+    var lower = text.toLowerCase();
+    for (var i = 0; i < INTENTS.length; i++) {
+      var intent = INTENTS[i];
+      for (var j = 0; j < intent.keys.length; j++) {
+        if (lower.indexOf(intent.keys[j]) !== -1) {
+          if (intent.access) return null;
+          return intent.replies[Math.floor(Math.random() * intent.replies.length)];
+        }
+      }
+    }
+    var idx;
+    do { idx = Math.floor(Math.random() * FALLBACKS.length); } while (idx === lastFallback && FALLBACKS.length > 1);
+    lastFallback = idx;
+    return FALLBACKS[idx];
+  }
+
+  function send() {
+    var text = chatInput.value.trim();
+    if (!text) return;
+    pushMessage(text, 'user');
+    chatInput.value = '';
+    chatInput.focus();
+    var typing = addTyping();
+    var reply = pickReply(text);
+    setTimeout(function () {
+      typing.remove();
+      if (reply === null) {
+        pushAccessCard([WAITLIST_TEXT, ACCESS_TEXT], true);
+      } else {
+        pushMessage(reply, 'bot');
+      }
+    }, 900 + Math.random() * 700);
   }
 
   function copyInvite(btn) {
     var label = btn.textContent;
     function done() {
       btn.textContent = 'הקישור הועתק!';
+      srStatus.textContent = 'קישור ההזמנה הועתק ללוח';
       setTimeout(function () { btn.textContent = label; }, 2000);
     }
     function fallbackCopy() {
@@ -441,12 +616,21 @@
   }
 
   inviteBtn.addEventListener('click', function () {
-    addMessage('אני רוצה להזמין 1500 חברים להצטרף!', 'user');
+    pushMessage('אני רוצה להזמין 1500 חברים להצטרף!', 'user');
     var typing = addTyping();
     setTimeout(function () {
       typing.remove();
-      addInviteCard();
+      pushAccessCard(['בשמחה! כדי לקבל גישה מיידית בלי לחכות בתור, עליכם לצרף 1500 חברים לשירות. שתפו איתם את קישור ההזמנה האישי שלכם:'], true);
     }, 900 + Math.random() * 700);
+  });
+
+  newChatBtn.addEventListener('click', function () {
+    history = [];
+    lastFallback = -1;
+    try { localStorage.removeItem(STORAGE_KEY); } catch (e) {}
+    while (chatBody.firstChild) chatBody.removeChild(chatBody.firstChild);
+    pushMessage('שיחה חדשה נפתחה. אני Elhanan AI, עדיין בבטא, עדיין מבריק. במה אוכל לעזור?', 'bot');
+    srStatus.textContent = 'השיחה נמחקה ושיחה חדשה נפתחה';
   });
 
   sendBtn.addEventListener('click', send);
@@ -454,7 +638,30 @@
     if (e.key === 'Enter') send();
   });
 
-  addMessage('שלום! אני Elchanan AI. במה אוכל לעזור היום?', 'bot');
+  function restore() {
+    var raw = null;
+    try { raw = localStorage.getItem(STORAGE_KEY); } catch (e) {}
+    if (raw) {
+      try {
+        var saved = JSON.parse(raw);
+        if (Array.isArray(saved)) {
+          saved.forEach(function (entry) {
+            if (entry && entry.k === 'm' && typeof entry.text === 'string') {
+              addMessage(entry.text, entry.who === 'user' ? 'user' : 'bot');
+              history.push(entry);
+            } else if (entry && entry.k === 'c' && Array.isArray(entry.lines)) {
+              addAccessCard(entry.lines, !!entry.copy);
+              history.push(entry);
+            }
+          });
+        }
+      } catch (e) {}
+    }
+    if (history.length === 0) {
+      pushMessage(GREETING_TEXT, 'bot');
+    }
+  }
+  restore();
 
   document.querySelectorAll('.plan button').forEach(function (btn) {
     btn.addEventListener('click', function () {
