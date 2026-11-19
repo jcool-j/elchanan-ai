@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elchanan AI</title>
+<meta name="description" content="Elchanan AI - מודל הבינה המלאכותית מהדור הבא. כעת בבטא פרטית.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #07070f;
+    --bg-2: #0d0d1c;
+    --card: #12122280;
+    --line: #26263f;
+    --ink: #f2f1fa;
+    --ink-2: #a7a5c4;
+    --accent: #7c6cff;
+    --accent-2: #38bdf8;
+    --danger: #ff5d6c;
+    --radius: 18px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Heebo', 'Segoe UI', Arial, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+  }
+  a { color: inherit; text-decoration: none; }
+
+  .nav {
+    position: sticky; top: 0; z-index: 50;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 22px;
+    background: rgba(7,7,15,0.82);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+  }
+  .logo { font-weight: 800; font-size: 20px; letter-spacing: 0.2px; }
+  .logo .dot { color: var(--accent-2); }
+  .badge-beta {
+    font-size: 12px; font-weight: 600; color: #0b0b16;
+    background: linear-gradient(90deg, var(--accent-2), var(--accent));
+    border-radius: 999px; padding: 3px 10px; margin-inline-start: 8px;
+    vertical-align: middle;
+  }
+  .nav-links { display: flex; gap: 18px; font-size: 15px; color: var(--ink-2); }
+  .nav-links a:hover { color: var(--ink); }
+
+  .hero {
+    position: relative;
+    text-align: center;
+    padding: 84px 20px 64px;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: ""; position: absolute; inset: 0;
+    background: url('10-hero.jpg') center/cover no-repeat;
+    opacity: 0.5;
+  }
+  .hero::after {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(7,7,15,0.25) 0%, rgba(7,7,15,0.72) 70%, var(--bg) 100%);
+  }
+  .hero > * { position: relative; z-index: 1; }
+  .hero h1 {
+    font-size: clamp(34px, 6vw, 58px);
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 14px;
+  }
+  .hero h1 .grad {
+    background: linear-gradient(90deg, var(--accent-2), var(--accent));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .hero p {
+    color: var(--ink-2); font-size: clamp(16px, 2.4vw, 19px);
+    max-width: 560px; margin: 0 auto 26px;
+  }
+  .cta {
+    display: inline-block;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    color: #0b0b16; font-weight: 700; font-size: 17px;
+    padding: 13px 34px; border-radius: 999px; border: 0; cursor: pointer;
+    transition: transform 0.15s ease;
+  }
+  .cta:hover { transform: translateY(-2px); }
+
+  section { padding: 56px 20px; max-width: 980px; margin: 0 auto; }
+  .section-title { font-size: clamp(26px, 4vw, 34px); font-weight: 800; margin-bottom: 8px; }
+  .section-sub { color: var(--ink-2); margin-bottom: 30px; }
+
+  /* Chat */
+  .chat-shell {
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+    max-width: 640px; margin: 0 auto;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.45);
+  }
+  .chat-head {
+    display: flex; align-items: center; gap: 10px;
+    padding: 14px 18px; border-bottom: 1px solid var(--line);
+    background: #10101f;
+  }
+  .avatar {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; color: #0b0b16; font-size: 15px;
+  }
+  .chat-head .name { font-weight: 700; }
+  .chat-head .status { font-size: 13px; color: #4ade80; display: flex; align-items: center; gap: 5px; }
+  .chat-head .status::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #4ade80; }
+  .chat-body {
+    height: 340px; overflow-y: auto;
+    padding: 18px 14px; display: flex; flex-direction: column; gap: 10px;
+  }
+  .msg {
+    max-width: 82%; padding: 10px 14px; border-radius: 16px;
+    font-size: 15px; line-height: 1.5; white-space: pre-wrap; word-wrap: break-word;
+  }
+  .msg.bot {
+    align-self: flex-start;
+    background: #1c1c33; border: 1px solid var(--line);
+    border-start-start-radius: 4px;
+  }
+  .msg.user {
+    align-self: flex-end;
+    background: linear-gradient(135deg, var(--accent), #5a4bd6);
+    color: #fff; border-end-end-radius: 4px;
+  }
+  .typing { display: flex; gap: 5px; padding: 14px 16px; }
+  .typing span {
+    width: 7px; height: 7px; border-radius: 50%; background: var(--ink-2);
+    animation: blink 1.2s infinite;
+  }
+  .typing span:nth-child(2) { animation-delay: 0.2s; }
+  .typing span:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes blink { 0%, 60%, 100% { opacity: 0.25; } 30% { opacity: 1; } }
+  .chat-input {
+    display: flex; gap: 10px; padding: 12px;
+    border-top: 1px solid var(--line); background: #10101f;
+  }
+  .chat-input input {
+    flex: 1; background: #191930; border: 1px solid var(--line);
+    border-radius: 12px; padding: 12px 14px; color: var(--ink);
+    font-family: inherit; font-size: 15px; outline: none;
+  }
+  .chat-input input:focus { border-color: var(--accent); }
+  .chat-input button {
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    border: 0; border-radius: 12px; color: #0b0b16; font-weight: 700;
+    font-family: inherit; font-size: 15px; padding: 0 22px; cursor: pointer;
+  }
+
+  /* Plans */
+  .plans { display: grid; grid-template-columns: 1fr; gap: 18px; }
+  @media (min-width: 720px) { .plans { grid-template-columns: repeat(3, 1fr); } }
+  .plan {
+    background: var(--bg-2); border: 1px solid var(--line);
+    border-radius: var(--radius); padding: 26px 22px;
+    display: flex; flex-direction: column; gap: 14px;
+    transition: transform 0.15s ease, border-color 0.15s ease;
+  }
+  .plan:hover { transform: translateY(-4px); border-color: var(--accent); }
+  .plan.featured { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent), 0 18px 46px rgba(124,108,255,0.18); }
+  .plan-name { font-size: 19px; font-weight: 800; }
+  .plan-tag { font-size: 12px; font-weight: 700; color: var(--accent-2); }
+  .plan-price { font-size: 34px; font-weight: 800; }
+  .plan-price small { font-size: 14px; font-weight: 400; color: var(--ink-2); }
+  .plan ul { list-style: none; display: flex; flex-direction: column; gap: 8px; color: var(--ink-2); font-size: 14.5px; flex: 1; }
+  .plan li::before { content: "✓"; color: var(--accent-2); font-weight: 700; margin-inline-end: 8px; }
+  .plan button {
+    background: transparent; border: 1px solid var(--accent); color: var(--ink);
+    border-radius: 12px; padding: 12px; font-family: inherit; font-size: 15.5px;
+    font-weight: 700; cursor: pointer; transition: background 0.15s ease;
+  }
+  .plan button:hover { background: rgba(124,108,255,0.14); }
+  .plan.featured button { background: linear-gradient(90deg, var(--accent), var(--accent-2)); color: #0b0b16; border: 0; }
+
+  /* Error dialog */
+  .overlay {
+    position: fixed; inset: 0; z-index: 100;
+    background: rgba(4,4,10,0.7); backdrop-filter: blur(4px);
+    display: none; align-items: center; justify-content: center; padding: 20px;
+  }
+  .overlay.open { display: flex; }
+  .dialog {
+    background: var(--bg-2); border: 1px solid var(--line);
+    border-radius: var(--radius); max-width: 420px; width: 100%;
+    padding: 28px 24px; text-align: center;
+  }
+  .dialog .icon {
+    width: 54px; height: 54px; margin: 0 auto 14px; border-radius: 50%;
+    background: rgba(255,93,108,0.12); color: var(--danger);
+    display: flex; align-items: center; justify-content: center; font-size: 26px; font-weight: 800;
+  }
+  .dialog h3 { font-size: 20px; font-weight: 800; margin-bottom: 8px; }
+  .dialog p { color: var(--ink-2); font-size: 15.5px; margin-bottom: 20px; }
+  .dialog button {
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    border: 0; border-radius: 12px; color: #0b0b16; font-weight: 700;
+    font-family: inherit; font-size: 15px; padding: 11px 30px; cursor: pointer;
+  }
+
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 26px 20px; text-align: center;
+    color: var(--ink-2); font-size: 13.5px;
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="logo"><span dir="ltr">Elchanan AI</span><span class="dot">.</span><span class="badge-beta">בטא</span></div>
+  <div class="nav-links">
+    <a href="#chat">צ'אט</a>
+    <a href="#plans">תוכניות</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <h1>הבינה המלאכותית<br><span class="grad">מהדור הבא</span></h1>
+  <p><span dir="ltr">Elchanan AI</span> הוא מודל שפה מתקדם שמבין עברית כמו שצריך. השירות נמצא כרגע בבטא פרטית, והגישה ניתנת בהדרגה.</p>
+  <a class="cta" href="#chat">התחילו לשוחח</a>
+</header>
+
+<section id="chat">
+  <h2 class="section-title">שוחחו עם <span dir="ltr">Elchanan AI</span></h2>
+  <p class="section-sub">שאלו כל שאלה. המודל שלנו כבר כמעט מוכן.</p>
+  <div class="chat-shell">
+    <div class="chat-head">
+      <div class="avatar" dir="ltr">EA</div>
+      <div>
+        <div class="name" dir="ltr">Elchanan AI</div>
+        <div class="status">מחובר</div>
+      </div>
+    </div>
+    <div class="chat-body" id="chatBody"></div>
+    <div class="chat-input">
+      <input id="chatInput" type="text" placeholder="כתבו הודעה..." autocomplete="off" aria-label="כתבו הודעה">
+      <button id="sendBtn" type="button">שליחה</button>
+    </div>
+  </div>
+</section>
+
+<section id="plans">
+  <h2 class="section-title">תוכניות ומחירים</h2>
+  <p class="section-sub">בחרו את התוכנית שמתאימה לכם וקבלו גישה מוקדמת ברגע שהבטא תיפתח.</p>
+  <div class="plans">
+    <div class="plan">
+      <div>
+        <div class="plan-name" dir="ltr">Elchanan AI plus</div>
+        <div class="plan-tag">למתחילים</div>
+      </div>
+      <div class="plan-price">₪29<small> / חודש</small></div>
+      <ul>
+        <li>עד 50 שאלות ביום</li>
+        <li>מהירות תגובה רגילה</li>
+        <li>גישה למודל הבסיס</li>
+      </ul>
+      <button type="button" data-plan="Elchanan AI plus">רכישה</button>
+    </div>
+    <div class="plan featured">
+      <div>
+        <div class="plan-name" dir="ltr">Elchanan AI Pro</div>
+        <div class="plan-tag">הפופולרית ביותר</div>
+      </div>
+      <div class="plan-price">₪59<small> / חודש</small></div>
+      <ul>
+        <li>שאלות ללא הגבלה</li>
+        <li>מהירות תגובה מואצת</li>
+        <li>גישה למודל המתקדם</li>
+        <li>זיכרון שיחה מלא</li>
+      </ul>
+      <button type="button" data-plan="Elchanan AI Pro">רכישה</button>
+    </div>
+    <div class="plan">
+      <div>
+        <div class="plan-name" dir="ltr">Elchanan AI Ultra</div>
+        <div class="plan-tag">לחובבים כבדים</div>
+      </div>
+      <div class="plan-price">₪139<small> / חודש</small></div>
+      <ul>
+        <li>כל מה שיש ב-Pro</li>
+        <li>עדיפות מקסימלית בתור</li>
+        <li>גישה מוקדמת לפיצ'רים חדשים</li>
+        <li>מנהל חשבון אישי</li>
+      </ul>
+      <button type="button" data-plan="Elchanan AI Ultra">רכישה</button>
+    </div>
+  </div>
+</section>
+
+<div class="overlay" id="errorOverlay" role="dialog" aria-modal="true" aria-labelledby="errTitle">
+  <div class="dialog">
+    <div class="icon">!</div>
+    <h3 id="errTitle">שגיאת רכישה</h3>
+    <p id="errText">אירעה תקלה ברכישה. לפרטים נא לפנות לקצבורג או לשושי.</p>
+    <button type="button" id="errClose">הבנתי</button>
+  </div>
+</div>
+
+<footer>
+  <span dir="ltr">Elchanan AI</span> © 2026 · כל הזכויות שמורות
+</footer>
+
+<script>
+(function () {
+  var chatBody = document.getElementById('chatBody');
+  var chatInput = document.getElementById('chatInput');
+  var sendBtn = document.getElementById('sendBtn');
+  var overlay = document.getElementById('errorOverlay');
+  var errClose = document.getElementById('errClose');
+
+  var WAITLIST_REPLY = 'תודה על פנייתך! אתה נמצא כרגע ברשימת ההמתנה לשירות Elchanan AI, שעדיין נמצא בגרסת בטא.\nמיקומך בתור: 13415678.';
+
+  function scrollToBottom() {
+    chatBody.scrollTop = chatBody.scrollHeight;
+  }
+
+  function addMessage(text, who) {
+    var div = document.createElement('div');
+    div.className = 'msg ' + who;
+    div.textContent = text;
+    chatBody.appendChild(div);
+    scrollToBottom();
+  }
+
+  function addTyping() {
+    var div = document.createElement('div');
+    div.className = 'msg bot typing';
+    for (var i = 0; i < 3; i++) div.appendChild(document.createElement('span'));
+    chatBody.appendChild(div);
+    scrollToBottom();
+    return div;
+  }
+
+  function send() {
+    var text = chatInput.value.trim();
+    if (!text) return;
+    addMessage(text, 'user');
+    chatInput.value = '';
+    chatInput.focus();
+    var typing = addTyping();
+    setTimeout(function () {
+      typing.remove();
+      addMessage(WAITLIST_REPLY, 'bot');
+    }, 900 + Math.random() * 700);
+  }
+
+  sendBtn.addEventListener('click', send);
+  chatInput.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') send();
+  });
+
+  addMessage('שלום! אני Elchanan AI. במה אוכל לעזור היום?', 'bot');
+
+  document.querySelectorAll('.plan button').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      overlay.classList.add('open');
+    });
+  });
+  function closeErr() { overlay.classList.remove('open'); }
+  errClose.addEventListener('click', closeErr);
+  overlay.addEventListener('click', function (e) {
+    if (e.target === overlay) closeErr();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeErr();
+  });
+})();
+</script>
+</body>
+</html>
