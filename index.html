@@ -491,6 +491,7 @@
 
   var history = [];
   var lastFallback = -1;
+  var hasReplied = false;
 
   function scrollToBottom() {
     chatBody.scrollTop = chatBody.scrollHeight;
@@ -581,7 +582,9 @@
     chatInput.value = '';
     chatInput.focus();
     var typing = addTyping();
-    var reply = pickReply(text);
+    var isFirstReply = !hasReplied;
+    hasReplied = true;
+    var reply = isFirstReply ? null : pickReply(text);
     setTimeout(function () {
       typing.remove();
       if (reply === null) {
@@ -618,15 +621,22 @@
   inviteBtn.addEventListener('click', function () {
     pushMessage('אני רוצה להזמין 1500 חברים להצטרף!', 'user');
     var typing = addTyping();
+    var isFirstReply = !hasReplied;
+    hasReplied = true;
     setTimeout(function () {
       typing.remove();
-      pushAccessCard(['בשמחה! כדי לקבל גישה מיידית בלי לחכות בתור, עליכם לצרף 1500 חברים לשירות. שתפו איתם את קישור ההזמנה האישי שלכם:'], true);
+      if (isFirstReply) {
+        pushAccessCard([WAITLIST_TEXT, ACCESS_TEXT], true);
+      } else {
+        pushAccessCard(['בשמחה! כדי לקבל גישה מיידית בלי לחכות בתור, עליכם לצרף 1500 חברים לשירות. שתפו איתם את קישור ההזמנה האישי שלכם:'], true);
+      }
     }, 900 + Math.random() * 700);
   });
 
   newChatBtn.addEventListener('click', function () {
     history = [];
     lastFallback = -1;
+    hasReplied = false;
     try { localStorage.removeItem(STORAGE_KEY); } catch (e) {}
     while (chatBody.firstChild) chatBody.removeChild(chatBody.firstChild);
     pushMessage('שיחה חדשה נפתחה. אני Elhanan AI, עדיין בבטא, עדיין מבריק. במה אוכל לעזור?', 'bot');
@@ -656,6 +666,12 @@
           });
         }
       } catch (e) {}
+    }
+    var seenUser = false;
+    for (var i = 0; i < history.length; i++) {
+      var e2 = history[i];
+      if (e2.k === 'm' && e2.who === 'user') { seenUser = true; continue; }
+      if (seenUser && (e2.k === 'c' || (e2.k === 'm' && e2.who !== 'user'))) { hasReplied = true; break; }
     }
     if (history.length === 0) {
       pushMessage(GREETING_TEXT, 'bot');
